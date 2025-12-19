@@ -1,796 +1,1233 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="SPIC MACAY - Society for the Promotion of Indian Classical Music And Culture Amongst Youth. Experience the heritage through concerts, workshops, and heritage walks.">
-    <title>SPIC MACAY | Experience the Heritage</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Manrope:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,200,0,0" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
-    
-    <!-- Google Maps -->
-    <script>
-        (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
-            key: "AIzaSyCxrRJaiGBNF74diUiMQkAIJIGzX_mnL1M",
-            v: "weekly",
-        });
-    </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SPIC MACAY - Society for the Promotion of Indian Classical Music And Culture Amongst Youth. Experience the heritage through concerts, workshops, and heritage walks." />
+  <title>SPIC MACAY | Experience the Heritage</title>
 
-    <style>
-        :root {
-            --brand-yellow: #FFDE17;
-            --brand-red: #B91C1C;
-            --brand-black: #111111;
-            --brand-cream: #FDFBF7;
-            --brand-gold: #D4AF37;
-        }
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Manrope:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,200,0,0" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
 
-        body {
-            font-family: 'Manrope', sans-serif;
-            background-color: var(--brand-cream);
-            color: var(--brand-black);
-            overflow-x: hidden;
-        }
+  <script>
+    (g => {
+      var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window;
+      b = b[c] || (b[c] = {});
+      var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => {
+        await (a = m.createElement("script"));
+        e.set("libraries", [...r] + "");
+        for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]);
+        e.set("callback", c + ".maps." + q);
+        a.src = `https://maps.${c}apis.com/maps/api/js?` + e;
+        d[q] = f;
+        a.onerror = () => h = n(Error(p + " could not load."));
+        a.nonce = m.querySelector("script[nonce]")?.nonce || "";
+        m.head.append(a);
+      }));
+      d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n));
+    })({
+      key: "AIzaSyCxrRJaiGBNF74diUiMQkAIJIGzX_mnL1M",
+      v: "weekly",
+    });
+  </script>
 
-        h1, h2, h3, .serif {
-            font-family: 'Playfair Display', serif;
-        }
+  <style>
+    :root {
+      --brand-yellow: #FFDE17;
+      --brand-red: #B91C1C;
+      --brand-black: #111111;
+      --brand-cream: #FDFBF7;
+      --brand-gold: #D4AF37;
+    }
+    .nav-item {
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
 
-        .cinzel {
-            font-family: 'Cinzel', serif;
-        }
+    body {
+      font-family: 'Manrope', sans-serif;
+      background-color: var(--brand-cream);
+      color: var(--brand-black);
+      overflow-x: hidden;
+    }
 
-        .texture-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 9999;
-            opacity: 0.3;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
-        }
+    h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
+    .cinzel { font-family: 'Cinzel', serif; }
 
-        .nav-scrolled {
-            background-color: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(12px);
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-            padding-top: 1rem !important;
-            padding-bottom: 1rem !important;
-        }
+    .texture-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.3;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    }
+    .nav-dd { position: relative; }
+    .nav-dd::after{
+      content:"";
+      position:absolute;
+      left:-8px;
+      right:-8px;
+      top:100%;
+      height:18px;
+    }
 
-        .fade-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .fade-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    .nav-dd-panel{
+      opacity:0;
+      transform: translateY(10px);
+      pointer-events:none;
+      transition: opacity .18s ease, transform .18s ease;
+    }
 
-        .module-card {
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .module-card:hover {
-            transform: translateY(-5px);
-        }
-        .module-card:hover img {
-            transform: scale(1.05);
-        }
+    .nav-dd:hover .nav-dd-panel,
+    .nav-dd:focus-within .nav-dd-panel{
+      opacity:1;
+      transform: translateY(0);
+      pointer-events:auto;
+    }
 
-        .raga-ring-bg { stroke: #e5e5e5; }
-        .raga-ring-progress { 
-            stroke: var(--brand-red); 
-            stroke-linecap: round; 
-            transition: stroke-dashoffset 1s ease-in-out;
-        }
-        
-        .bar {
-            animation: pulse-bar 0.8s ease-in-out infinite;
-            transition: background-color 0.3s ease;
-        }
-        
-        @keyframes pulse-bar {
-            0%, 100% { transform: scaleY(0.3); }
-            50% { transform: scaleY(1); }
-        }
-        
-        .gm-style .gm-style-iw-c {
-            padding: 0;
-            border-radius: 4px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-            font-family: 'Manrope', sans-serif;
-        }
-        .gm-style-iw-d { overflow: hidden !important; }
-        button.gm-ui-hover-effect { filter: brightness(0); }
-    </style>
+    .nav-scrolled {
+      background-color: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      padding-top: 1rem !important;
+      padding-bottom: 1rem !important;
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .module-card { transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+    .module-card:hover { transform: translateY(-5px); }
+    .module-card:hover img { transform: scale(1.05); }
+
+    .raga-ring-bg { stroke: #e7e7e7; }
+    #time-progress { transition: stroke-dashoffset 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+    #progress-dot { transition: cx 1.2s cubic-bezier(0.16, 1, 0.3, 1), cy 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+
+    .bar {
+      animation: pulse-bar 0.8s ease-in-out infinite;
+      transition: background-color 0.3s ease;
+    }
+    @keyframes pulse-bar {
+      0%, 100% { transform: scaleY(0.3); }
+      50% { transform: scaleY(1); }
+    }
+
+    .gm-style .gm-style-iw-c {
+      padding: 0;
+      border-radius: 4px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+      font-family: 'Manrope', sans-serif;
+    }
+    .gm-style-iw-d { overflow: hidden !important; }
+    button.gm-ui-hover-effect { filter: brightness(0); }
+  </style>
 </head>
+
 <body class="antialiased selection:bg-yellow-200 selection:text-black">
-    <div class="texture-overlay"></div>
+  <div class="texture-overlay"></div>
 
-    <!-- NAVIGATION -->
-    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500 pt-6 pb-6 border-b border-transparent">
-        <div class="container mx-auto px-6 md:px-12 flex justify-between items-center">
-            <a href="#" class="flex items-center gap-4 group z-50" aria-label="SPIC MACAY Home">
-                <div class="w-10 h-10 relative flex items-center justify-center">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKBavh6fab4IuugCFyFSZXgrq0stCcypCz5Q&s" alt="SPIC MACAY - Society for Promotion of Indian Classical Music and Culture Amongst Youth" class="w-full h-full object-contain mix-blend-multiply filter contrast-125 group-hover:scale-105 transition-transform duration-500" loading="eager">
-                </div>
-                <div class="flex flex-col">
-                    <span class="text-lg cinzel font-semibold tracking-wider leading-none text-black">SPIC MACAY</span>
-                </div>
-            </a>
+  <nav id="navbar" class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur border-b border-transparent transition-all duration-300">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="h-20 flex items-center justify-between gap-8">
+        
+        <a href="index.html" class="flex items-center gap-4 min-w-max">
+          <div class="w-10 h-10 flex items-center justify-center">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKBavh6fab4IuugCFyFSZXgrq0stCcypCz5Q&s"
+              alt="SPIC MACAY"
+              class="w-full h-full object-contain"
+            />
+          </div>
+          <span class="cinzel text-lg tracking-widest font-semibold text-black whitespace-nowrap leading-none">
+            SPIC MACAY
+          </span>
+        </a>
 
-            <div class="hidden lg:flex items-center gap-10 text-xs font-semibold uppercase tracking-[0.15em] text-gray-800">
-                <a href="#about" class="hover:text-red-800 transition-colors">About</a>
-                <a href="#modules" class="hover:text-red-800 transition-colors">Modules</a>
-                <a href="#raga-cycle" class="hover:text-red-800 transition-colors">Raga Cycle</a>
-                <a href="#impact" class="hover:text-red-800 transition-colors">Impact</a>
-                <a href="#events" class="hover:text-red-800 transition-colors">Calendar</a>
-                <a href="#involve" class="px-6 py-2 border border-gray-900 hover:bg-black hover:text-white transition-all">Donate</a>
-            </div>
-
-            <button class="lg:hidden text-2xl z-50" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
-                <span class="material-symbols-outlined">menu</span>
+        <div class="hidden lg:flex items-center gap-10 text-[11px] font-semibold uppercase tracking-[0.22em] text-gray-900">
+          
+          <div class="relative nav-dd" data-dd>
+            <button class="nav-dd-btn flex items-center gap-2 py-3" type="button" aria-haspopup="true" aria-expanded="false">
+              OUR MOVEMENT
+              <span class="material-symbols-outlined text-[16px] leading-none opacity-70">keyboard_arrow_down</span>
             </button>
+
+            <div class="nav-dd-panel absolute left-0 top-full pt-3 opacity-0 invisible pointer-events-none transition-all duration-200">
+              <div class="w-64 bg-white border border-gray-200 shadow-xl">
+                <a href="our-movement/about.html" class="block px-5 py-3 text-[11px] tracking-[0.18em] hover:bg-gray-50">About SPIC MACAY</a>
+                <a href="our-movement/vision.html" class="block px-5 py-3 text-[11px] tracking-[0.18em] hover:bg-gray-50">Vision</a>
+                <a href="our-movement/founder.html" class="block px-5 py-3 text-[11px] tracking-[0.18em] hover:bg-gray-50">Founder</a>
+                <a href="our-movement/team.html" class="block px-5 py-3 text-[11px] tracking-[0.18em] hover:bg-gray-50">Team</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative nav-dd" data-dd>
+            <button class="nav-dd-btn flex items-center gap-2 py-3" type="button" aria-haspopup="true" aria-expanded="false">
+              OUR WORK
+              <span class="material-symbols-outlined text-[16px] leading-none opacity-70">keyboard_arrow_down</span>
+            </button>
+
+            <div class="nav-dd-panel absolute left-0 top-full pt-3 opacity-0 invisible pointer-events-none transition-all duration-200">
+              <div class="w-72 bg-white border border-gray-200 shadow-xl">
+                <a href="our-work/our-modules.html" class="block px-5 py-3 text-[11px] tracking-[0.18em] hover:bg-gray-50">Our Modules</a>
+                <a href="our-work/our-activities.html" class="block px-5 py-3 text-[11px] tracking-[0.18em] hover:bg-gray-50">Our Activities</a>
+                <a href="our-work/gurukul.html" class="block px-5 py-3 text-[11px] tracking-[0.18em] hover:bg-gray-50">Gurukul Anubhav Scholarship Scheme</a>
+                <a href="our-work/convention.html" class="block px-5 py-3 text-[11px] tracking-[0.18em] hover:bg-gray-50">International Convention</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative nav-dd" data-dd>
+            <button class="nav-dd-btn flex items-center gap-2 py-3" type="button" aria-haspopup="true" aria-expanded="false">
+              EVENTS
+              <span class="material-symbols-outlined text-[16px] leading-none opacity-70">keyboard_arrow_down</span>
+            </button>
+
+            <div class="nav-dd-panel absolute left-0 top-full pt-3 opacity-0 invisible pointer-events-none transition-all duration-200">
+              <div class="w-56 bg-white border border-gray-200 shadow-xl">
+                <a href="events/news.html" class="block px-5 py-3 text-[11px] tracking-[0.18em] hover:bg-gray-50">News</a>
+                <a href="events/calendar.html" class="block px-5 py-3 text-[11px] tracking-[0.18em] hover:bg-gray-50">Calendar</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative nav-dd" data-dd>
+            <button class="nav-dd-btn flex items-center gap-2 py-3" type="button" aria-haspopup="true" aria-expanded="false">
+              CHAPTERS
+              <span class="material-symbols-outlined text-[16px] leading-none opacity-70">keyboard_arrow_down</span>
+            </button>
+
+            <div class="nav-dd-panel absolute left-0 top-full pt-3 opacity-0 invisible pointer-events-none transition-all duration-200">
+              <div class="w-64 bg-white border border-gray-200 shadow-xl">
+                <a href="centres/india.html" class="block px-5 py-3 text-[11px] tracking-[0.18em] hover:bg-gray-50">India</a>
+                <a href="centres/international.html" class="block px-5 py-3 text-[11px] tracking-[0.18em] hover:bg-gray-50">International</a>
+              </div>
+            </div>
+          </div>
+
+          <a href="volunteer/index.html" class="py-3 whitespace-nowrap hover:text-red-800 transition-colors">
+            VOLUNTEER WITH US
+          </a>
+
+          <a href="supporters/index.html" class="py-3 whitespace-nowrap hover:text-red-800 transition-colors">
+            SUPPORTERS
+          </a>
+
+          <a href="donate/index.html" class="ml-4 px-10 py-3 border border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap">
+            DONATE
+          </a>
         </div>
 
-        <div class="fixed inset-0 bg-[#FDFBF7] z-40 transform translate-x-full transition-transform duration-500 flex flex-col items-center justify-center gap-8" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile navigation">
-            <a href="#about" class="text-2xl serif" onclick="toggleMenu()">About</a>
-            <a href="#modules" class="text-2xl serif" onclick="toggleMenu()">Modules</a>
-            <a href="#raga-cycle" class="text-2xl serif" onclick="toggleMenu()">Raga Cycle</a>
-            <a href="#impact" class="text-2xl serif" onclick="toggleMenu()">Impact</a>
-            <a href="#events" class="text-2xl serif" onclick="toggleMenu()">Events</a>
-            <a href="#involve" class="text-2xl serif text-red-800" onclick="toggleMenu()">Donate</a>
-        </div>
-    </nav>
-
-    <!-- HERO -->
-    <header class="relative h-screen w-full flex items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <img src="https://upnow-prod.ff45e40d1a1c8f7e7de4e976d0c9e555.r2.cloudflarestorage.com/p5OWBXbxz6TSPkxFWw7uAcLXhv32/e1a5ec8e-6c2d-42e7-9ae7-a125f9f37fe0?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=2f488bd324502ec20fee5b40e9c9ed39%2F20251219%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20251219T024144Z&X-Amz-Expires=43200&X-Amz-Signature=80bc79121995fc0b3f08027bfc4880dfd72d83d2e7b744515afe39e7146ddbb1&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%3D%22Website%20bg.png%22" alt="Atmospheric sitar performance with warm lighting" class="w-full h-full object-cover scale-105 animate-[pulse_20s_ease-in-out_infinite]" loading="eager">
-            <div class="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-black/60 mix-blend-multiply"></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-[#FDFBF7] to-transparent"></div>
-        </div>
-
-        <div class="container mx-auto px-6 relative z-10 pt-20 text-center md:text-left">
-            <div class="max-w-4xl">
-                <p class="text-xs font-bold tracking-[0.3em] uppercase text-red-900 mb-6 flex items-center gap-4 justify-center md:justify-start fade-up">
-                    <span class="w-12 h-[1px] bg-red-900 hidden md:block"></span> Est. 1977
-                </p>
-                <h1 class="text-6xl md:text-8xl lg:text-9xl serif text-gray-900 leading-[0.9] mb-8 fade-up delay-100">
-                    The Inward <br>
-                    <span class="italic text-gray-600 font-light">Journey</span>
-                </h1>
-                <p class="text-lg md:text-xl font-light text-gray-700 leading-relaxed max-w-xl mb-12 fade-up delay-200 border-l-0 md:border-l-2 border-yellow-400 pl-0 md:pl-6 mx-auto md:mx-0">
-                    Experience the mysticism of Indian Classical heritage. An abstract, subtle, and inspiring journey for the youth.
-                </p>
-                <div class="flex flex-col md:flex-row gap-6 justify-center md:justify-start fade-up delay-300">
-                    <a href="#modules" class="px-8 py-4 bg-gray-900 text-[#FDFBF7] text-xs font-bold uppercase tracking-[0.2em] hover:bg-red-900 transition-colors shadow-lg">
-                        Explore Modules
-                    </a>
-                    <button class="group flex items-center justify-center gap-4 px-6 py-4 border border-gray-900 text-gray-900 text-xs font-bold uppercase tracking-[0.2em] hover:bg-gray-100 transition-colors min-h-[44px]" onclick="toggleDrone()" aria-label="Play or stop tanpura drone">
-                        <span id="play-text-hero">Play Tanpura</span>
-                        <div class="flex gap-1 h-3 items-end" id="visualizer-hero" aria-hidden="true" style="opacity: 0.5;">
-                            <div class="bar w-[2px] h-full bg-gray-900 group-hover:bg-red-800"></div>
-                            <div class="bar w-[2px] h-full bg-gray-900 group-hover:bg-red-800" style="animation-delay: -200ms;"></div>
-                            <div class="bar w-[2px] h-full bg-gray-900 group-hover:bg-red-800" style="animation-delay: -400ms;"></div>
-                        </div>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </header>
-<!-- PHILOSOPHY -->
-   <section id="philosophy" class="py-24 md:py-32 bg-white">
-        <div class="container mx-auto px-6 md:px-12">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24 items-center">
-                <div class="order-2 lg:order-1 fade-up visible">
-                    <div class="relative">
-                        <img src="https://res.cloudinary.com/do4z4xado/image/upload/v1766113893/74edce04-2195-4d6b-ad4c-396576a4a6c5_uahsxo.png" class="w-full h-auto object-cover grayscale hover:grayscale-0 transition-all duration-1000 shadow-xl" alt="Hands playing Tabla" style="">
-                        <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-[#F5F5F0] -z-10"></div>
-                    </div>
-                    <p class="mt-4 text-xs text-gray-400 text-right italic font-serif">A homage to the masters.</p>
-                </div>
-                <div class="order-1 lg:order-2 fade-up visible">
-<span class="text-red-800 text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Our Philosophy</span>
-                    <h2 class="text-4xl md:text-5xl serif font-light mb-8 leading-tight">
-                        Not entertainment,<br>
-                        <span class="italic text-gray-500">but enrichment.</span>
-                    </h2>
-                    <div class="space-y-6 text-gray-600 font-light text-lg leading-relaxed">
-                        <p>
-                            <strong class="text-black font-normal">SPIC MACAY</strong> (Society for the Promotion of Indian Classical Music And Culture Amongst Youth) is a non-political, nationwide voluntary movement founded in 1977 by Dr. Kiran Seth.
-                        </p>
-                        <p>
-                            We believe that the abstract and subtle nature of Indian classical arts can help a student find the <span class="text-[#8B0000] italic font-serif">center</span> within. It is about an inward journey, fostering patience, discipline, and a quiet mind in a noisy world.
-                        </p>
-                        <p>
-                            Our intention is to enrich the quality of formal education by increasing awareness about different aspects of Indian heritage and inspiring the young mind to imbibe the values embedded in it.
-                        </p>
-                    </div>
-                    <div class="mt-10">
-                        <a href="#" class="text-xs font-bold tracking-[0.2em] uppercase text-[#8B0000] border-b border-[#8B0000] pb-1 hover:text-black hover:border-black transition-all">Read the Vision Statement</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- RAGA CYCLE -->
-    <section id="raga-cycle" class="py-24 bg-white relative overflow-hidden border-b border-gray-100">
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-32">
-                <div class="relative w-80 h-80 md:w-[500px] md:h-[500px] flex-shrink-0 fade-up">
-                    <div class="absolute inset-0 border border-gray-200 rounded-full scale-110"></div>
-                    <div class="absolute inset-0 border border-gray-100 rounded-full scale-125 opacity-50"></div>
-
-                    <svg class="w-full h-full -rotate-90 transform transition-all duration-1000" viewBox="0 0 100 100">
-                        <circle class="raga-ring-bg" cx="50" cy="50" r="45" fill="none" stroke-width="2"></circle>
-                        <circle class="raga-ring-progress" id="time-progress" cx="50" cy="50" r="45" fill="none" stroke-width="2" stroke-dasharray="283" stroke-dashoffset="0"></circle>
-                        <line x1="50" y1="5" x2="50" y2="10" stroke="#ccc" stroke-width="0.5"></line>
-                        <line x1="90" y1="50" x2="95" y2="50" stroke="#ccc" stroke-width="0.5"></line>
-                        <line x1="50" y1="90" x2="50" y2="95" stroke="#ccc" stroke-width="0.5"></line>
-                        <line x1="5" y1="50" x2="10" y2="50" stroke="#ccc" stroke-width="0.5"></line>
-                    </svg>
-
-                    <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
-                        <div class="mb-4">
-                            <span class="material-symbols-outlined text-4xl text-gray-300 font-light" id="time-icon">light_mode</span>
-                        </div>
-                        <span class="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-red-800 mb-2">Current Prahar</span>
-                        <h3 class="text-4xl md:text-5xl serif text-black mb-2 leading-none" id="raga-name">Bhimpalasi</h3>
-                        <p class="text-sm font-light text-gray-500 tracking-wide uppercase" id="prahar-name">Madhyanha (Noon)</p>
-                        <p class="mt-6 font-serif text-2xl text-gray-300" id="current-time">12:00</p>
-                    </div>
-                </div>
-
-                <div class="fade-up delay-100 max-w-lg">
-                    <span class="text-gray-400 text-xs font-bold tracking-[0.2em] uppercase mb-6 block">Circadian Rhythm</span>
-                    <h2 class="text-4xl serif text-gray-900 mb-6">The Cycle of Time</h2>
-                    <p class="text-gray-600 font-light text-lg leading-relaxed mb-8">
-                        Indian Classical Music is not just art; it is a science of the soul. Melodies (Ragas) are prescribed for specific times of the day to align your inner rhythm with the movement of the sun.
-                    </p>
-                    <div class="bg-[#FDFBF7] p-8 border-l-2 border-yellow-400">
-                        <span class="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Atmosphere</span>
-                        <p class="text-xl serif italic text-black" id="raga-mood">Passion, Triumph</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- MODULES -->
-    <section id="modules" class="py-32 bg-[#FDFBF7]">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-20 fade-up">
-                <div>
-                    <span class="text-red-800 text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Our Offerings</span>
-                    <h2 class="text-4xl serif text-gray-900">Core Activities</h2>
-                </div>
-                <div class="hidden md:block w-32 h-[1px] bg-gray-300 mb-4"></div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <div class="module-card group cursor-pointer fade-up">
-                    <div class="aspect-[4/3] overflow-hidden mb-6 relative bg-gray-200">
-                        <img src="https://www.spicmacay.org/sites/default/files/styles/image_landscape_30_screen_width_16_9/public/eventModules/classical-arts.jpeg?itok=HVD6c9ms" alt="Close-up of Indian classical sitar player's hands showing intricate playing technique" class="w-full h-full object-cover transition-transform duration-700 grayscale group-hover:grayscale-0" loading="lazy">
-                        <div class="absolute bottom-4 left-4 bg-white px-3 py-1 text-[0.6rem] font-bold uppercase tracking-widest">Virasat</div>
-                    </div>
-                    <h3 class="text-2xl serif text-gray-900 mb-2 group-hover:text-red-800 transition-colors">Concerts</h3>
-                    <p class="text-sm text-gray-500 font-light leading-relaxed">
-                        Live performances by maestros, bringing the magic of Raga and Tala directly to students.
-                    </p>
-                </div>
-
-                <div class="module-card group cursor-pointer fade-up delay-100">
-                    <div class="aspect-[4/3] overflow-hidden mb-6 relative bg-gray-200">
-                        <img src="https://www.spicmacay.org/sites/default/files/styles/image_landscape_30_screen_width_16_9/public/eventModules/talk.jpeg?itok=5bSql-mr" alt="Indian classical artist conducting lecture demonstration for students in classroom" class="w-full h-full object-cover transition-transform duration-700 grayscale group-hover:grayscale-0" loading="lazy">
-                        <div class="absolute bottom-4 left-4 bg-white px-3 py-1 text-[0.6rem] font-bold uppercase tracking-widest">Education</div>
-                    </div>
-                    <h3 class="text-2xl serif text-gray-900 mb-2 group-hover:text-red-800 transition-colors">Talks & Lec-Dems</h3>
-                    <p class="text-sm text-gray-500 font-light leading-relaxed">
-                        Interactive sessions where artists demystify the art form, explaining the grammar of music and dance.
-                    </p>
-                </div>
-
-                <div class="module-card group cursor-pointer fade-up delay-200">
-                    <div class="aspect-[4/3] overflow-hidden mb-6 relative bg-gray-200">
-                        <img src="https://res.cloudinary.com/do4z4xado/image/upload/v1766112516/3b790544-ca2e-401a-9442-3fcc17c4d168_eajrrx.png" alt="Group of people on heritage walk exploring Indian monument architecture" class="w-full h-full object-cover transition-transform duration-700 grayscale group-hover:grayscale-0" loading="lazy">
-                        <div class="absolute bottom-4 left-4 bg-white px-3 py-1 text-[0.6rem] font-bold uppercase tracking-widest">Exploration</div>
-                    </div>
-                    <h3 class="text-2xl serif text-gray-900 mb-2 group-hover:text-red-800 transition-colors">Heritage Walks</h3>
-                    <p class="text-sm text-gray-500 font-light leading-relaxed">
-                        Guided walks through historical monuments and museums to connect with the history etched in stone.
-                    </p>
-                </div>
-
-                <div class="module-card group cursor-pointer fade-up delay-300">
-                    <div class="aspect-[4/3] overflow-hidden mb-6 relative bg-gray-200">
-                        <img src="https://www.spicmacay.org/sites/default/files/styles/image_landscape_30_screen_width_16_9/public/eventModules/yoga-meditation_0.jpeg?itok=0zrvW9Mq" alt="Silhouette of person practicing yoga meditation at sunrise by peaceful lake" class="w-full h-full object-cover transition-transform duration-700 grayscale group-hover:grayscale-0" loading="lazy">
-                        <div class="absolute bottom-4 left-4 bg-white px-3 py-1 text-[0.6rem] font-bold uppercase tracking-widest">Wellness</div>
-                    </div>
-                    <h3 class="text-2xl serif text-gray-900 mb-2 group-hover:text-red-800 transition-colors">Yoga & Holistic Health</h3>
-                    <p class="text-sm text-gray-500 font-light leading-relaxed">
-                        Practicing Hatha Yoga and Naad Yoga (Yoga of Sound) for physical and mental equilibrium.
-                    </p>
-                </div>
-
-                <div class="module-card group cursor-pointer fade-up delay-400">
-                    <div class="aspect-[4/3] overflow-hidden mb-6 relative bg-gray-200">
-                        <img src="https://www.spicmacay.org/sites/default/files/styles/image_landscape_30_screen_width_16_9/public/eventModules/cinema-classics_1.jpeg?itok=jQr6Xrh6" alt="Classic cinema film reel and projector in black and white aesthetic" class="w-full h-full object-cover transition-transform duration-700 grayscale group-hover:grayscale-0" loading="lazy">
-                        <div class="absolute bottom-4 left-4 bg-white px-3 py-1 text-[0.6rem] font-bold uppercase tracking-widest">Visual Art</div>
-                    </div>
-                    <h3 class="text-2xl serif text-gray-900 mb-2 group-hover:text-red-800 transition-colors">Cinema Classics</h3>
-                    <p class="text-sm text-gray-500 font-light leading-relaxed">
-                        Screenings of masterpieces by legends like Satyajit Ray, Kurosawa, and Bergman to refine visual literacy.
-                    </p>
-                </div>
-
-                <div class="module-card group cursor-pointer fade-up delay-500">
-                    <div class="aspect-[4/3] overflow-hidden mb-6 relative bg-gray-200">
-                        <img src="https://res.cloudinary.com/do4z4xado/image/upload/v1766112733/b680d867-4cf9-4c69-99dd-1f173e1a4e6d_ty2f68.png" class="w-full h-full object-cover transition-transform duration-700 grayscale group-hover:grayscale-0" loading="lazy">
-                        <div class="absolute bottom-4 left-4 bg-white px-3 py-1 text-[0.6rem] font-bold uppercase tracking-widest">Intensives</div>
-                    </div>
-                    <h3 class="text-2xl serif text-gray-900 mb-2 group-hover:text-red-800 transition-colors">Workshops</h3>
-                    <p class="text-sm text-gray-500 font-light leading-relaxed">
-                        Intensive 5-day workshops with Gurus to learn the basics of classical art forms and crafts.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- IMPACT -->
-    <section class="py-32 bg-[#111] text-white relative overflow-hidden" id="impact">
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="text-center mb-20 fade-up">
-                <span class="text-yellow-600 text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Our Reach</span>
-                <h2 class="text-5xl serif text-white mb-6 leading-tight">A Movement <br> <span class="italic text-gray-400">Across India</span></h2>
-                <p class="text-gray-400 font-light text-lg max-w-2xl mx-auto leading-relaxed">
-                    For over four decades, SPIC MACAY has been quietly transforming lives through the power of heritage.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
-                <div class="text-center fade-up delay-100 group">
-                    <div class="mb-4">
-                        <span class="material-symbols-outlined text-5xl text-yellow-600 group-hover:scale-110 transition-transform duration-500">music_note</span>
-                    </div>
-                    <div class="text-5xl md:text-6xl serif text-white mb-2 counter" data-target="500">0</div>
-                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-gray-500">Master Artists</span>
-                    <p class="text-[0.6rem] text-gray-600 mt-2 font-light">Legends sharing their life's work</p>
-                </div>
-
-                <div class="text-center fade-up delay-200 group">
-                    <div class="mb-4">
-                        <span class="material-symbols-outlined text-5xl text-yellow-600 group-hover:scale-110 transition-transform duration-500">school</span>
-                    </div>
-                    <div class="text-5xl md:text-6xl serif text-white mb-2 counter" data-target="3000">0</div>
-                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-gray-500">Institutions</span>
-                    <p class="text-[0.6rem] text-gray-600 mt-2 font-light">Universities, schools & colleges</p>
-                </div>
-
-                <div class="text-center fade-up delay-300 group">
-                    <div class="mb-4">
-                        <span class="material-symbols-outlined text-5xl text-yellow-600 group-hover:scale-110 transition-transform duration-500">event</span>
-                    </div>
-                    <div class="text-5xl md:text-6xl serif text-white mb-2 counter" data-target="5000">0</div>
-                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-gray-500">Activities/Year</span>
-                    <p class="text-[0.6rem] text-gray-600 mt-2 font-light">Concerts, workshops & walks</p>
-                </div>
-
-                <div class="text-center fade-up delay-500 group">
-                    <div class="mb-4">
-                        <span class="material-symbols-outlined text-5xl text-yellow-600 group-hover:scale-110 transition-transform duration-500">groups</span>
-                    </div>
-                    <div class="text-5xl md:text-6xl serif text-white mb-2 counter" data-target="8000000">0</div>
-                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-gray-500">Students Touched</span>
-                    <p class="text-[0.6rem] text-gray-600 mt-2 font-light">Lives changed, perspectives shifted</p>
-                </div>
-            </div>
-
-            <div class="bg-red-900 p-8 md:p-12 border-l-2 border-yellow-600 fade-up delay-300">
-                <p class="text-xl md:text-2xl serif italic text-[#FDFBF7] leading-relaxed mb-4">
-                    "SPIC MACAY is not an organization. It is a living, breathing movement — a silent revolution nurturing the soul of a generation."
-                </p>
-                <span class="text-xs font-bold uppercase tracking-[0.2em] text-yellow-600">Dr. Kiran Seth, Founder</span>
-            </div>
-        </div>
-
-        <div class="absolute top-0 right-0 w-80 h-80 bg-gradient-to-br from-yellow-600/5 to-transparent rounded-full blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-red-900/10 to-transparent rounded-full blur-3xl"></div>
-    </section>
-
-    <!-- STORIES -->
-<section class="py-32 bg-white border-t border-gray-100" id="stories">
-<div class="container mx-auto px-6">
-<div class="flex flex-col lg:flex-row gap-16">
-<div class="lg:w-1/3 sticky top-32 h-fit fade-up">
-<span class="text-gray-400 text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Voices</span>
-<h2 class="text-5xl serif text-gray-900 mb-8 leading-tight">Stories That <br> <span class="italic text-gray-500">Inspire</span></h2>
-<a href="#" class="px-8 py-3 border border-gray-900 text-xs font-bold uppercase tracking-[0.2em] hover:bg-gray-900 hover:text-white transition-colors">View Archive</a>
-</div>
-<div class="lg:w-2/3 space-y-12">
-<div class="fade-up">
-<div class="flex flex-col md:flex-row gap-8">
-<div class="w-full md:w-1/3 aspect-[3/4]">
-<img src="/gen?prompt=young+indian+student+in+auditorium+listening+intently+black+and+white+portrait&aspect=3:4" alt="Young Indian student listening intently during classical music performance" class="w-full h-full object-cover" loading="lazy">
-</div>
-<div class="md:w-2/3 py-4">
-<span class="text-[0.6rem] font-bold uppercase tracking-widest text-yellow-600 mb-2 block">Reflection</span>
-<h3 class="text-3xl serif text-gray-900 mb-4">"I found my center"</h3>
-<p class="text-gray-600 font-light leading-relaxed mb-6">
-"Before SPIC MACAY, I thought classical music was boring. One concert changed everything. I learned to listen, really listen. It taught me patience that helps me in my engineering studies."
-</p>
-<a href="#" class="text-xs font-bold uppercase tracking-widest text-red-800 hover:underline">Read Full Story</a>
-</div>
-</div>
-</div>
-<div class="fade-up delay-100">
-                    <div class="flex flex-col md:flex-row gap-8">
-                        <div class="w-full md:w-1/3 aspect-[3/4]">
-                            <img src="/gen?prompt=indian+classical+guru+teaching+disciple+outdoors+serene+black+and+white&aspect=3:4" alt="Indian classical guru teaching disciple outdoors in serene setting" class="w-full h-full object-cover" loading="lazy">
-                        </div>
-                        <div class="md:w-2/3 py-4">
-                            <span class="text-[0.6rem] font-bold uppercase tracking-widest text-yellow-600 mb-2 block">Gurukul</span>
-                            <h3 class="text-3xl serif text-gray-900 mb-4">The Living Link</h3>
-                            <p class="text-gray-600 font-light leading-relaxed mb-6">
-                                "Living with a maestro is not just about learning music; it is about absorbing a way of life. The discipline, the devotion, the silence."
-                            </p>
-                            <a href="#" class="text-xs font-bold uppercase tracking-widest text-red-800 hover:underline">Read Full Story</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <button id="mobileMenuBtn" class="lg:hidden w-11 h-11 border border-gray-300 flex items-center justify-center" aria-label="Open menu" aria-expanded="false">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+      </div>
     </div>
-</section>
-<div class="fade-up delay-100">
-                    <div class="flex flex-col md:flex-row gap-8">
-                        <div class="w-full md:w-1/3 aspect-[3/4]">
-                            <img src="/gen?prompt=indian+classical+guru+teaching+disciple+outdoors+serene+black+and+white&aspect=3:4" alt="Indian classical guru teaching disciple outdoors in serene setting" class="w-full h-full object-cover" loading="lazy">
-                        </div>
-                        <div class="md:w-2/3 py-4">
-                            <span class="text-[0.6rem] font-bold uppercase tracking-widest text-yellow-600 mb-2 block">Gurukul</span>
-                            <h3 class="text-3xl serif text-gray-900 mb-4">The Living Link</h3>
-                            <p class="text-gray-600 font-light leading-relaxed mb-6">
-                                "Living with a maestro is not just about learning music; it is about absorbing a way of life. The discipline, the devotion, the silence."
-                            </p>
-                            <a href="#" class="text-xs font-bold uppercase tracking-widest text-red-800 hover:underline">Read Full Story</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
-<!-- EVENTS MAP -->
-<section class="py-32 bg-[#FAFAFA] border-t border-gray-100" id="events">
+    <div id="mobileMenu" class="lg:hidden hidden border-t border-gray-200 bg-white">
+      <div class="px-6 py-6 space-y-3 text-sm font-semibold uppercase tracking-[0.18em]">
+        <div class="space-y-2">
+          <div class="text-xs text-gray-400 tracking-[0.2em]">Our Movement</div>
+          <a class="block py-2" href="our-movement/about.html">About</a>
+          <a class="block py-2" href="our-movement/vision.html">Vision</a>
+          <a class="block py-2" href="our-movement/founder.html">Founder</a>
+          <a class="block py-2" href="our-movement/team.html">Team</a>
+        </div>
+
+        <div class="space-y-2 pt-4 border-t border-gray-100">
+          <div class="text-xs text-gray-400 tracking-[0.2em]">Our Work</div>
+          <a class="block py-2" href="our-work/our-modules.html">Our Modules</a>
+          <a class="block py-2" href="our-work/our-activities.html">Our Activities</a>
+          <a class="block py-2" href="our-work/gurukul.html">Gurukul</a>
+          <a class="block py-2" href="our-work/virasat.html">Virasat</a>
+        </div>
+
+        <div class="space-y-2 pt-4 border-t border-gray-100">
+          <div class="text-xs text-gray-400 tracking-[0.2em]">Events</div>
+          <a class="block py-2" href="events/news.html">News</a>
+          <a class="block py-2" href="events/calendar.html">Calendar</a>
+        </div>
+
+        <div class="space-y-2 pt-4 border-t border-gray-100">
+          <div class="text-xs text-gray-400 tracking-[0.2em]">Centres</div>
+          <a class="block py-2" href="centres/india.html">India</a>
+          <a class="block py-2" href="centres/international.html">International</a>
+        </div>
+
+        <a class="block py-2 pt-4 border-t border-gray-100" href="volunteer/index.html">Volunteer With Us</a>
+        <a class="block py-2" href="supporters/index.html">Supporters</a>
+
+        <a class="block mt-4 px-6 py-3 border border-gray-900 text-center" href="donate/index.html">Donate</a>
+      </div>
+    </div>
+  </nav>
+
+  <script>
+    (function () {
+      const dropdowns = document.querySelectorAll('[data-dd]');
+      dropdowns.forEach(dd => {
+        const btn = dd.querySelector('.nav-dd-btn');
+        const panel = dd.querySelector('.nav-dd-panel');
+        let closeTimer = null;
+
+        const open = () => {
+          clearTimeout(closeTimer);
+          btn.setAttribute('aria-expanded', 'true');
+          panel.style.opacity = '1';
+          panel.style.visibility = 'visible';
+          panel.style.pointerEvents = 'auto';
+        };
+
+        const close = () => {
+          closeTimer = setTimeout(() => {
+            btn.setAttribute('aria-expanded', 'false');
+            panel.style.opacity = '';
+            panel.style.visibility = '';
+            panel.style.pointerEvents = '';
+          }, 120);
+        };
+
+        dd.addEventListener('mouseenter', open);
+        dd.addEventListener('mouseleave', close);
+
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const isOpen = btn.getAttribute('aria-expanded') === 'true';
+          if (isOpen) close();
+          else open();
+        });
+
+        dd.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            btn.setAttribute('aria-expanded', 'false');
+            panel.style.opacity = '';
+            panel.style.visibility = '';
+            panel.style.pointerEvents = '';
+            btn.blur();
+          }
+        });
+      });
+
+      const mobileBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+
+      if (mobileBtn && mobileMenu) {
+        mobileBtn.addEventListener('click', () => {
+          const isOpen = !mobileMenu.classList.contains('hidden');
+          mobileMenu.classList.toggle('hidden');
+          mobileBtn.setAttribute('aria-expanded', String(!isOpen));
+          mobileBtn.querySelector('span').textContent = isOpen ? 'menu' : 'close';
+        });
+      }
+    })();
+  </script>
+
+  <header class="relative h-screen w-full flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img src="https://res.cloudinary.com/do4z4xado/image/upload/v1766156534/Website_bg_1_hvwera.png" alt="Atmospheric sitar performance with warm lighting" class="w-full h-full object-cover scale-105 animate-[pulse_20s_ease-in-out_infinite]" loading="eager" />
+      <div class="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-black/60 mix-blend-multiply"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-[#FDFBF7] to-transparent"></div>
+    </div>
+
+    <div class="container mx-auto px-6 relative z-10 pt-20 text-center md:text-left">
+      <div class="max-w-4xl">
+        <p class="text-xs font-bold tracking-[0.3em] uppercase text-red-900 mb-6 flex items-center gap-4 justify-center md:justify-start fade-up">
+          <span class="w-12 h-[1px] bg-red-900 hidden md:block"></span> Est. 1977
+        </p>
+        <h1 class="text-6xl md:text-8xl lg:text-9xl serif text-gray-900 leading-[0.9] mb-8 fade-up delay-100">
+          The Inward <br />
+          <span class="italic text-gray-600 font-light">Journey</span>
+        </h1>
+        <p class="text-lg md:text-xl font-light text-gray-700 leading-relaxed max-w-xl mb-12 fade-up delay-200 border-l-0 md:border-l-2 border-yellow-400 pl-0 md:pl-6 mx-auto md:mx-0">
+          Experience the mysticism of Indian Classical heritage. An abstract, subtle, and inspiring journey for the youth.
+        </p>
+        <div class="flex flex-col md:flex-row gap-6 justify-center md:justify-start fade-up delay-300">
+          <a href="#modules" class="px-8 py-4 bg-gray-900 text-[#FDFBF7] text-xs font-bold uppercase tracking-[0.2em] hover:bg-red-900 transition-colors shadow-lg">
+            Explore Modules
+          </a>
+          <button class="group flex items-center justify-center gap-4 px-6 py-4 border border-gray-900 text-gray-900 text-xs font-bold uppercase tracking-[0.2em] hover:bg-gray-100 transition-colors min-h-[44px]" onclick="toggleDrone()" aria-label="Play or stop tanpura drone">
+            <span id="play-text-hero">Play Tanpura</span>
+            <div class="flex gap-1 h-3 items-end" id="visualizer-hero" aria-hidden="true" style="opacity: 0.5;">
+              <div class="bar w-[2px] h-full bg-gray-900 group-hover:bg-red-800"></div>
+              <div class="bar w-[2px] h-full bg-gray-900 group-hover:bg-red-800" style="animation-delay: -200ms;"></div>
+              <div class="bar w-[2px] h-full bg-gray-900 group-hover:bg-red-800" style="animation-delay: -400ms;"></div>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="philosophy" class="py-24 md:py-32 bg-white">
+    <div class="container mx-auto px-6 md:px-12">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24 items-center">
+        <div class="order-2 lg:order-1 fade-up visible">
+          <div class="relative">
+            <img src="https://res.cloudinary.com/do4z4xado/image/upload/v1766113893/74edce04-2195-4d6b-ad4c-396576a4a6c5_uahsxo.png" class="w-full h-auto object-cover grayscale hover:grayscale-0 transition-all duration-1000 shadow-xl" alt="Hands playing Tabla" />
+            <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-[#F5F5F0] -z-10"></div>
+          </div>
+          <p class="mt-4 text-xs text-gray-400 text-right italic font-serif">A homage to the masters.</p>
+        </div>
+        <div class="order-1 lg:order-2 fade-up visible">
+          <span class="text-red-800 text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Our Philosophy</span>
+          <h2 class="text-4xl md:text-5xl serif font-light mb-8 leading-tight">
+            Not entertainment,<br />
+            <span class="italic text-gray-500">but enrichment.</span>
+          </h2>
+          <div class="space-y-6 text-gray-600 font-light text-lg leading-relaxed">
+            <p><strong class="text-black font-normal">SPIC MACAY</strong> (Society for the Promotion of Indian Classical Music And Culture Amongst Youth) is a non-political, nationwide voluntary movement founded in 1977 by Dr. Kiran Seth.</p>
+            <p>We believe that the abstract and subtle nature of Indian classical arts can help a student find the <span class="text-[#8B0000] italic font-serif">center</span> within. It is about an inward journey, fostering patience, discipline, and a quiet mind in a noisy world.</p>
+            <p>Our intention is to enrich the quality of formal education by increasing awareness about different aspects of Indian heritage and inspiring the young mind to imbibe the values embedded in it.</p>
+          </div>
+          <div class="mt-10">
+            <a href="#" class="text-xs font-bold tracking-[0.2em] uppercase text-[#8B0000] border-b border-[#8B0000] pb-1 hover:text-black hover:border-black transition-all">Read the Vision Statement</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="raga-cycle" class="py-24 bg-white relative overflow-hidden border-b border-gray-100">
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-32">
+        <div class="relative w-80 h-80 md:w-[500px] md:h-[500px] flex-shrink-0 fade-up">
+          <div class="absolute inset-0 scale-110">
+  <svg class="w-full h-full transform transition-all duration-1000" viewBox="0 0 100 100">
+    <defs>
+      <linearGradient id="ringStroke" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#B91C1C" stop-opacity="1"></stop>
+        <stop offset="100%" stop-color="#D4AF37" stop-opacity="1"></stop>
+      </linearGradient>
+
+      <filter id="crispGlow" x="-50%" y="-50%" width="200%" height="200%">
+        <feDropShadow dx="0" dy="0" stdDeviation="2" flood-color="#B91C1C" flood-opacity="0.4"/>
+      </filter>
+    </defs>
+
+    <circle cx="50" cy="50" r="40" fill="none" stroke="#e5e7eb" stroke-width="0.8"></circle>
+
+    <g class="text-gray-300 font-sans text-[3px] font-semibold">
+      <line x1="50" y1="10" x2="50" y2="7" stroke="currentColor" stroke-width="1" />
+      <text x="50" y="5.5" text-anchor="middle" fill="#9ca3af">00</text>
+      
+      <line x1="50" y1="10" x2="50" y2="7" stroke="currentColor" stroke-width="0.8" transform="rotate(30, 50, 50)" />
+
+      <line x1="50" y1="10" x2="50" y2="7" stroke="currentColor" stroke-width="0.8" transform="rotate(60, 50, 50)" />
+
+      <line x1="50" y1="10" x2="50" y2="7" stroke="currentColor" stroke-width="1" transform="rotate(90, 50, 50)" />
+      <text x="96" y="51" text-anchor="middle" fill="#9ca3af">06</text>
+
+      <line x1="50" y1="10" x2="50" y2="7" stroke="currentColor" stroke-width="0.8" transform="rotate(120, 50, 50)" />
+
+      <line x1="50" y1="10" x2="50" y2="7" stroke="currentColor" stroke-width="0.8" transform="rotate(150, 50, 50)" />
+
+      <line x1="50" y1="10" x2="50" y2="7" stroke="currentColor" stroke-width="1" transform="rotate(180, 50, 50)" />
+      <text x="50" y="97" text-anchor="middle" fill="#9ca3af">12</text>
+
+      <line x1="50" y1="10" x2="50" y2="7" stroke="currentColor" stroke-width="0.8" transform="rotate(210, 50, 50)" />
+
+      <line x1="50" y1="10" x2="50" y2="7" stroke="currentColor" stroke-width="0.8" transform="rotate(240, 50, 50)" />
+
+      <line x1="50" y1="10" x2="50" y2="7" stroke="currentColor" stroke-width="1" transform="rotate(270, 50, 50)" />
+      <text x="4" y="51" text-anchor="middle" fill="#9ca3af">18</text>
+
+      <line x1="50" y1="10" x2="50" y2="7" stroke="currentColor" stroke-width="0.8" transform="rotate(300, 50, 50)" />
+
+      <line x1="50" y1="10" x2="50" y2="7" stroke="currentColor" stroke-width="0.8" transform="rotate(330, 50, 50)" />
+    </g>
+
+    <circle
+      id="time-progress"
+      cx="50"
+      cy="50"
+      r="40"
+      fill="none"
+      stroke-width="2.5"
+      stroke="url(#ringStroke)"
+      stroke-linecap="round"
+      stroke-dasharray="0 283"
+      transform-origin="center"
+      filter="url(#crispGlow)"
+      class="transition-all duration-1000 ease-out"
+    ></circle>
+
+    <circle 
+      id="progress-dot" 
+      cx="50" 
+      cy="10" 
+      r="2" 
+      fill="#B91C1C" 
+      stroke="white" 
+      stroke-width="1"
+      filter="url(#crispGlow)"
+      class="transition-all duration-1000 ease-out"
+    ></circle>
+  </svg>
+</div>
+
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center px-8 z-10">
+  
+  <div class="mb-3">
+    <div class="flex items-center justify-center gap-2 text-yellow-600 mb-1">
+      <span class="material-symbols-outlined text-lg" id="time-icon">light_mode</span>
+      <span class="text-[0.6rem] font-bold uppercase tracking-[0.2em]" id="prahar-name">Madhyanha</span>
+    </div>
+  </div>
+
+  <div class="w-full space-y-3">
+    
+    <div class="group">
+      <span class="text-[0.5rem] font-bold uppercase tracking-widest text-gray-400 block mb-1">Hindustani</span>
+      <h3 class="text-xl md:text-2xl serif text-gray-900 leading-none group-hover:text-red-800 transition-colors" id="raga-name">Bhimpalasi</h3>
+    </div>
+
+    <div class="w-8 h-[1px] bg-gray-200 mx-auto"></div>
+
+    <div class="group">
+      <span class="text-[0.5rem] font-bold uppercase tracking-widest text-gray-400 block mb-1">Carnatic</span>
+      <h3 class="text-xl md:text-2xl serif text-gray-900 leading-none group-hover:text-red-800 transition-colors" id="raga-carnatic">Abheri</h3>
+    </div>
+    
+  </div>
+
+  <p class="font-serif text-lg text-gray-300 mt-4" id="current-time">12:00</p>
+</div>
+        </div>
+
+        <div class="fade-up delay-100 max-w-lg">
+          <span class="text-gray-400 text-xs font-bold tracking-[0.2em] uppercase mb-6 block">Circadian Rhythm</span>
+          <h2 class="text-4xl serif text-gray-900 mb-6">The Cycle of Time</h2>
+          <p class="text-gray-600 font-light text-lg leading-relaxed mb-8">
+            Indian Classical Music is not just art; it is a science of the soul. Melodies (Ragas) are prescribed for specific times of the day to align your inner rhythm with the movement of the sun.
+          </p>
+
+          <div id="atmosphere-card" class="p-8 border-l-2 border-yellow-400 relative overflow-hidden">
+            <div class="absolute inset-0 opacity-70" id="atmosphere-bg"></div>
+            <div class="relative">
+              <div class="flex items-center justify-between gap-4 mb-2">
+                <span class="block text-xs font-bold uppercase tracking-widest text-gray-400">Atmosphere</span>
+                <span id="season-pill" class="text-[0.65rem] font-bold uppercase tracking-[0.18em] px-3 py-1 border border-gray-200 bg-white/70 backdrop-blur-sm"></span>
+              </div>
+              <p class="text-xl serif italic text-black" id="raga-mood">Passion, Triumph</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="modules" class="py-32 bg-[#FDFBF7]">
     <div class="container mx-auto px-6">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-12 fade-up">
-            <div>
-                <span class="text-gray-400 text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Calendar</span>
-                <h2 class="text-4xl serif text-gray-900">Upcoming Events</h2>
-            </div>
-            <div class="flex gap-4 mt-6 md:mt-0">
-                <button class="w-12 h-12 border border-gray-300 flex items-center justify-center hover:bg-black hover:text-white transition-colors min-h-[44px] min-w-[44px]" aria-label="View events as list"><span class="material-symbols-outlined">list</span></button>
-                <button class="w-12 h-12 bg-black text-white flex items-center justify-center min-h-[44px] min-w-[44px]" aria-label="View events on map" aria-pressed="true"><span class="material-symbols-outlined">map</span></button>
-            </div>
+      <div class="flex flex-col md:flex-row justify-between items-end mb-20 fade-up">
+        <div>
+          <span class="text-red-800 text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Our Offerings</span>
+          <h2 class="text-4xl serif text-gray-900">Core Activities</h2>
         </div>
-        <div class="grid grid-cols-1 lg:grid-cols-3 h-[600px] border border-gray-200 shadow-2xl fade-up">
-            <div class="lg:col-span-1 overflow-y-auto bg-white" id="event-list"></div>
-            <div class="lg:col-span-2 relative bg-gray-100">
-                <div id="map" class="w-full h-full grayscale hover:grayscale-0 transition-all duration-700"></div>
-            </div>
-        </div>
-    </div>
-</section>
+        <div class="hidden md:block w-32 h-[1px] bg-gray-300 mb-4"></div>
+      </div>
 
-<!-- FOOTER -->
-<footer class="bg-[#111] text-gray-400 py-20 border-t border-gray-800" id="involve">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div class="module-card group cursor-pointer fade-up">
+          <div class="aspect-[4/3] overflow-hidden mb-6 relative bg-gray-200">
+            <img src="https://www.spicmacay.org/sites/default/files/styles/image_landscape_30_screen_width_16_9/public/eventModules/classical-arts.jpeg?itok=HVD6c9ms" alt="Close-up of Indian classical sitar player's hands showing intricate playing technique" class="w-full h-full object-cover transition-transform duration-700 grayscale group-hover:grayscale-0" loading="lazy" />
+            <div class="absolute bottom-4 left-4 bg-white px-3 py-1 text-[0.6rem] font-bold uppercase tracking-widest">Virasat</div>
+          </div>
+          <h3 class="text-2xl serif text-gray-900 mb-2 group-hover:text-red-800 transition-colors">Concerts</h3>
+          <p class="text-sm text-gray-500 font-light leading-relaxed">Live performances by maestros, bringing the magic of Raga and Tala directly to students.</p>
+        </div>
+
+        <div class="module-card group cursor-pointer fade-up delay-100">
+          <div class="aspect-[4/3] overflow-hidden mb-6 relative bg-gray-200">
+            <img src="https://www.spicmacay.org/sites/default/files/styles/image_landscape_30_screen_width_16_9/public/eventModules/talk.jpeg?itok=5bSql-mr" alt="Indian classical artist conducting lecture demonstration for students in classroom" class="w-full h-full object-cover transition-transform duration-700 grayscale group-hover:grayscale-0" loading="lazy" />
+            <div class="absolute bottom-4 left-4 bg-white px-3 py-1 text-[0.6rem] font-bold uppercase tracking-widest">Education</div>
+          </div>
+          <h3 class="text-2xl serif text-gray-900 mb-2 group-hover:text-red-800 transition-colors">Talks & Lec-Dems</h3>
+          <p class="text-sm text-gray-500 font-light leading-relaxed">Interactive sessions where artists demystify the art form, explaining the grammar of music and dance.</p>
+        </div>
+
+        <div class="module-card group cursor-pointer fade-up delay-200">
+          <div class="aspect-[4/3] overflow-hidden mb-6 relative bg-gray-200">
+            <img src="https://res.cloudinary.com/do4z4xado/image/upload/v1766112516/3b790544-ca2e-401a-9442-3fcc17c4d168_eajrrx.png" alt="Group of people on heritage walk exploring Indian monument architecture" class="w-full h-full object-cover transition-transform duration-700 grayscale group-hover:grayscale-0" loading="lazy" />
+            <div class="absolute bottom-4 left-4 bg-white px-3 py-1 text-[0.6rem] font-bold uppercase tracking-widest">Exploration</div>
+          </div>
+          <h3 class="text-2xl serif text-gray-900 mb-2 group-hover:text-red-800 transition-colors">Heritage Walks</h3>
+          <p class="text-sm text-gray-500 font-light leading-relaxed">Guided walks through historical monuments and museums to connect with the history etched in stone.</p>
+        </div>
+
+        <div class="module-card group cursor-pointer fade-up delay-300">
+          <div class="aspect-[4/3] overflow-hidden mb-6 relative bg-gray-200">
+            <img src="https://www.spicmacay.org/sites/default/files/styles/image_landscape_30_screen_width_16_9/public/eventModules/yoga-meditation_0.jpeg?itok=0zrvW9Mq" alt="Silhouette of person practicing yoga meditation at sunrise by peaceful lake" class="w-full h-full object-cover transition-transform duration-700 grayscale group-hover:grayscale-0" loading="lazy" />
+            <div class="absolute bottom-4 left-4 bg-white px-3 py-1 text-[0.6rem] font-bold uppercase tracking-widest">Wellness</div>
+          </div>
+          <h3 class="text-2xl serif text-gray-900 mb-2 group-hover:text-red-800 transition-colors">Yoga & Holistic Health</h3>
+          <p class="text-sm text-gray-500 font-light leading-relaxed">Practicing Hatha Yoga and Naad Yoga (Yoga of Sound) for physical and mental equilibrium.</p>
+        </div>
+
+        <div class="module-card group cursor-pointer fade-up delay-400">
+          <div class="aspect-[4/3] overflow-hidden mb-6 relative bg-gray-200">
+            <img src="https://www.spicmacay.org/sites/default/files/styles/image_landscape_30_screen_width_16_9/public/eventModules/cinema-classics_1.jpeg?itok=jQr6Xrh6" alt="Classic cinema film reel and projector in black and white aesthetic" class="w-full h-full object-cover transition-transform duration-700 grayscale group-hover:grayscale-0" loading="lazy" />
+            <div class="absolute bottom-4 left-4 bg-white px-3 py-1 text-[0.6rem] font-bold uppercase tracking-widest">Visual Art</div>
+          </div>
+          <h3 class="text-2xl serif text-gray-900 mb-2 group-hover:text-red-800 transition-colors">Cinema Classics</h3>
+          <p class="text-sm text-gray-500 font-light leading-relaxed">Screenings of masterpieces by legends like Satyajit Ray, Kurosawa, and Bergman to refine visual literacy.</p>
+        </div>
+
+        <div class="module-card group cursor-pointer fade-up delay-500">
+          <div class="aspect-[4/3] overflow-hidden mb-6 relative bg-gray-200">
+            <img src="https://res.cloudinary.com/do4z4xado/image/upload/v1766112733/b680d867-4cf9-4c69-99dd-1f173e1a4e6d_ty2f68.png" alt="Workshop with artisans" class="w-full h-full object-cover transition-transform duration-700 grayscale group-hover:grayscale-0" loading="lazy" />
+            <div class="absolute bottom-4 left-4 bg-white px-3 py-1 text-[0.6rem] font-bold uppercase tracking-widest">Intensives</div>
+          </div>
+          <h3 class="text-2xl serif text-gray-900 mb-2 group-hover:text-red-800 transition-colors">Workshops</h3>
+          <p class="text-sm text-gray-500 font-light leading-relaxed">Intensive 5-day workshops with Gurus to learn the basics of classical art forms and crafts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-32 bg-[#111] text-white relative overflow-hidden" id="impact">
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="text-center mb-20 fade-up">
+        <span class="text-yellow-600 text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Our Reach</span>
+        <h2 class="text-5xl serif text-white mb-6 leading-tight">A Movement <br /><span class="italic text-gray-400">Across India</span></h2>
+        <p class="text-gray-400 font-light text-lg max-w-2xl mx-auto leading-relaxed">
+          For over four decades, SPIC MACAY has been quietly transforming lives through the power of heritage.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+        <div class="text-center fade-up delay-100 group">
+          <div class="mb-4"><span class="material-symbols-outlined text-5xl text-yellow-600 group-hover:scale-110 transition-transform duration-500">music_note</span></div>
+          <div class="text-5xl md:text-6xl serif text-white mb-2 counter" data-target="500">0</div>
+          <span class="text-xs font-bold uppercase tracking-[0.2em] text-gray-500">Master Artists</span>
+          <p class="text-[0.6rem] text-gray-600 mt-2 font-light">Legends sharing their life's work</p>
+        </div>
+
+        <div class="text-center fade-up delay-200 group">
+          <div class="mb-4"><span class="material-symbols-outlined text-5xl text-yellow-600 group-hover:scale-110 transition-transform duration-500">school</span></div>
+          <div class="text-5xl md:text-6xl serif text-white mb-2 counter" data-target="3000">0</div>
+          <span class="text-xs font-bold uppercase tracking-[0.2em] text-gray-500">Institutions</span>
+          <p class="text-[0.6rem] text-gray-600 mt-2 font-light">Universities, schools & colleges</p>
+        </div>
+
+        <div class="text-center fade-up delay-300 group">
+          <div class="mb-4"><span class="material-symbols-outlined text-5xl text-yellow-600 group-hover:scale-110 transition-transform duration-500">event</span></div>
+          <div class="text-5xl md:text-6xl serif text-white mb-2 counter" data-target="5000">0</div>
+          <span class="text-xs font-bold uppercase tracking-[0.2em] text-gray-500">Activities/Year</span>
+          <p class="text-[0.6rem] text-gray-600 mt-2 font-light">Concerts, workshops & walks</p>
+        </div>
+
+        <div class="text-center fade-up delay-500 group">
+          <div class="mb-4"><span class="material-symbols-outlined text-5xl text-yellow-600 group-hover:scale-110 transition-transform duration-500">groups</span></div>
+          <div class="text-5xl md:text-6xl serif text-white mb-2 counter" data-target="8000000">0</div>
+          <span class="text-xs font-bold uppercase tracking-[0.2em] text-gray-500">Students Touched</span>
+          <p class="text-[0.6rem] text-gray-600 mt-2 font-light">Lives changed, perspectives shifted</p>
+        </div>
+      </div>
+
+      <div class="bg-red-900 p-8 md:p-12 border-l-2 border-yellow-600 fade-up delay-300">
+        <p class="text-xl md:text-2xl serif italic text-[#FDFBF7] leading-relaxed mb-4">
+          "SPIC MACAY is not an organization. It is a living, breathing movement — a silent revolution nurturing the soul of a generation."
+        </p>
+        <span class="text-xs font-bold uppercase tracking-[0.2em] text-yellow-600">Dr. Kiran Seth, Founder</span>
+      </div>
+    </div>
+
+    <div class="absolute top-0 right-0 w-80 h-80 bg-gradient-to-br from-yellow-600/5 to-transparent rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-red-900/10 to-transparent rounded-full blur-3xl"></div>
+  </section>
+
+  <section class="py-32 bg-white border-t border-gray-100" id="stories">
     <div class="container mx-auto px-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
-            <div>
-                <a href="#" class="flex items-center gap-3 mb-6">
-                    <span class="text-xl cinzel font-semibold text-white tracking-widest">SPIC MACAY</span>
-                </a>
-                <p class="text-xs leading-relaxed font-light mb-8 max-w-xs text-gray-500">
-                    Society for the Promotion of Indian Classical Music And Culture Amongst Youth. <br>
-                    41/42, Lucknow Road, Delhi - 110054
+      <div class="flex flex-col lg:flex-row gap-16">
+        <div class="lg:w-1/3 sticky top-32 h-fit fade-up">
+          <span class="text-gray-400 text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Voices</span>
+          <h2 class="text-5xl serif text-gray-900 mb-8 leading-tight">Stories That <br /><span class="italic text-gray-500">Inspire</span></h2>
+          <a href="#" class="px-8 py-3 border border-gray-900 text-xs font-bold uppercase tracking-[0.2em] hover:bg-gray-900 hover:text-white transition-colors">View Archive</a>
+        </div>
+
+        <div class="lg:w-2/3 space-y-12">
+          <div class="fade-up">
+            <div class="flex flex-col md:flex-row gap-8">
+              <div class="w-full md:w-1/3 aspect-[3/4]">
+                <img src="https://res.cloudinary.com/do4z4xado/image/upload/v1766149651/unnamed_pglyux.jpg" alt="Young Indian student listening intently during classical music performance" class="w-full h-full object-cover" loading="lazy" />
+              </div>
+              <div class="md:w-2/3 py-4">
+                <span class="text-[0.6rem] font-bold uppercase tracking-widest text-yellow-600 mb-2 block">Reflection</span>
+                <h3 class="text-3xl serif text-gray-900 mb-4">"I found my center"</h3>
+                <p class="text-gray-600 font-light leading-relaxed mb-6">
+                  "Before SPIC MACAY, I thought classical music was boring. One concert changed everything. I learned to listen, really listen. It taught me patience that helps me in my engineering studies."
                 </p>
-                <div class="flex gap-4">
-                    <a href="#" class="w-8 h-8 rounded-full border border-gray-700 flex items-center justify-center hover:border-white hover:text-white transition-colors" aria-label="Visit website"><span class="material-symbols-outlined text-sm">public</span></a>
-                    <a href="#" class="w-8 h-8 rounded-full border border-gray-700 flex items-center justify-center hover:border-white hover:text-white transition-colors" aria-label="Instagram"><span class="material-symbols-outlined text-sm">photo_camera</span></a>
-                </div>
+                <a href="#" class="text-xs font-bold uppercase tracking-widest text-red-800 hover:underline">Read Full Story</a>
+              </div>
             </div>
+          </div>
 
-            <div>
-                <h4 class="text-white text-xs font-bold uppercase tracking-[0.2em] mb-8">Discover</h4>
-                <ul class="space-y-4 text-sm font-light">
-                    <li><a href="#" class="hover:text-yellow-500 transition-colors">Virasat Series</a></li>
-                    <li><a href="#" class="hover:text-yellow-500 transition-colors">International Convention</a></li>
-                    <li><a href="#" class="hover:text-yellow-500 transition-colors">Gurukul Anubhav</a></li>
-                    <li><a href="#" class="hover:text-yellow-500 transition-colors">Cinema Classics</a></li>
-                </ul>
+          <div class="fade-up delay-100">
+            <div class="flex flex-col md:flex-row gap-8">
+              <div class="w-full md:w-1/3 aspect-[3/4]">
+                <img src="https://res.cloudinary.com/do4z4xado/image/upload/v1766149543/unnamed_x4e5ta.jpg" alt="Indian classical guru teaching disciple outdoors in serene setting" class="w-full h-full object-cover" loading="lazy" />
+              </div>
+              <div class="md:w-2/3 py-4">
+                <span class="text-[0.6rem] font-bold uppercase tracking-widest text-yellow-600 mb-2 block">Gurukul</span>
+                <h3 class="text-3xl serif text-gray-900 mb-4">The Living Link</h3>
+                <p class="text-gray-600 font-light leading-relaxed mb-6">
+                  "Living with a maestro is not just about learning music; it is about absorbing a way of life. The discipline, the devotion, the silence."
+                </p>
+                <a href="#" class="text-xs font-bold uppercase tracking-widest text-red-800 hover:underline">Read Full Story</a>
+              </div>
             </div>
-
-            <div>
-                <h4 class="text-white text-xs font-bold uppercase tracking-[0.2em] mb-8">Support</h4>
-                <ul class="space-y-4 text-sm font-light">
-                    <li><a href="#" class="hover:text-yellow-500 transition-colors">Volunteer Login</a></li>
-                    <li><a href="#" class="hover:text-yellow-500 transition-colors">Donate</a></li>
-                    <li><a href="#" class="hover:text-yellow-500 transition-colors">State Chapters</a></li>
-                    <li><a href="#" class="hover:text-red-500 transition-colors flex items-center gap-2">Grievances & Complaints <span class="material-symbols-outlined text-[10px]">open_in_new</span></a></li>
-                </ul>
-            </div>
-
-            <div>
-                <h4 class="text-white text-xs font-bold uppercase tracking-[0.2em] mb-8">Stay Connected</h4>
-                <form class="flex flex-col gap-4">
-                    <input type="email" placeholder="YOUR EMAIL" class="bg-[#1A1A1A] border border-gray-800 text-white px-4 py-3 text-xs focus:border-yellow-500 outline-none transition-colors">
-                    <button type="submit" class="bg-white text-black font-bold text-xs uppercase tracking-widest px-4 py-3 hover:bg-yellow-500 transition-colors">Subscribe</button>
-                </form>
-            </div>
+          </div>
         </div>
 
-        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-widest text-gray-600">
-            <p>© 2025 SPIC MACAY. All Rights Reserved.</p>
-            <div class="flex gap-8 mt-4 md:mt-0">
-                <a href="#" class="hover:text-white">Privacy Policy</a>
-                <a href="#" class="hover:text-white">Terms of Use</a>
-            </div>
-        </div>
+      </div>
     </div>
-</footer>
+  </section>
 
-<script>
-    // Navbar Scroll
+  <section class="py-32 bg-[#FAFAFA] border-t border-gray-100" id="events">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-12 fade-up">
+        <div>
+          <span class="text-gray-400 text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Calendar</span>
+          <h2 class="text-4xl serif text-gray-900">Upcoming Events</h2>
+        </div>
+        <div class="flex gap-4 mt-6 md:mt-0">
+          <button class="w-12 h-12 border border-gray-300 flex items-center justify-center hover:bg-black hover:text-white transition-colors min-h-[44px] min-w-[44px]" aria-label="View events as list">
+            <span class="material-symbols-outlined">list</span>
+          </button>
+          <button class="w-12 h-12 bg-black text-white flex items-center justify-center min-h-[44px] min-w-[44px]" aria-label="View events on map" aria-pressed="true">
+            <span class="material-symbols-outlined">map</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 h-[600px] border border-gray-200 shadow-2xl fade-up">
+        <div class="lg:col-span-1 overflow-y-auto bg-white" id="event-list"></div>
+        <div class="lg:col-span-2 relative bg-gray-100">
+          <div id="map" class="w-full h-full grayscale hover:grayscale-0 transition-all duration-700"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-[#111] text-gray-400 py-20 border-t border-gray-800" id="involve">
+    <div class="container mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
+        <div>
+          <a href="#" class="flex items-center gap-3 mb-6">
+            <span class="text-xl cinzel font-semibold text-white tracking-widest">SPIC MACAY</span>
+          </a>
+          <p class="text-xs leading-relaxed font-light mb-8 max-w-xs text-gray-500">
+            Society for the Promotion of Indian Classical Music And Culture Amongst Youth. <br />
+            41/42, Lucknow Road, Delhi - 110054
+          </p>
+          <div class="flex gap-4">
+            <a href="#" class="w-8 h-8 rounded-full border border-gray-700 flex items-center justify-center hover:border-white hover:text-white transition-colors" aria-label="Visit website">
+              <span class="material-symbols-outlined text-sm">public</span>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full border border-gray-700 flex items-center justify-center hover:border-white hover:text-white transition-colors" aria-label="Instagram">
+              <span class="material-symbols-outlined text-sm">photo_camera</span>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-white text-xs font-bold uppercase tracking-[0.2em] mb-8">Discover</h4>
+          <ul class="space-y-4 text-sm font-light">
+            <li><a href="#" class="hover:text-yellow-500 transition-colors">Virasat Series</a></li>
+            <li><a href="#" class="hover:text-yellow-500 transition-colors">International Convention</a></li>
+            <li><a href="#" class="hover:text-yellow-500 transition-colors">Gurukul Anubhav</a></li>
+            <li><a href="#" class="hover:text-yellow-500 transition-colors">Cinema Classics</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white text-xs font-bold uppercase tracking-[0.2em] mb-8">Support</h4>
+          <ul class="space-y-4 text-sm font-light">
+            <li><a href="#" class="hover:text-yellow-500 transition-colors">Volunteer Login</a></li>
+            <li><a href="#" class="hover:text-yellow-500 transition-colors">Donate</a></li>
+            <li><a href="#" class="hover:text-yellow-500 transition-colors">State Chapters</a></li>
+            <li><a href="#" class="hover:text-red-500 transition-colors flex items-center gap-2">Grievances & Complaints <span class="material-symbols-outlined text-[10px]">open_in_new</span></a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white text-xs font-bold uppercase tracking-[0.2em] mb-8">Stay Connected</h4>
+          <form class="flex flex-col gap-4">
+            <input type="email" placeholder="YOUR EMAIL" class="bg-[#1A1A1A] border border-gray-800 text-white px-4 py-3 text-xs focus:border-yellow-500 outline-none transition-colors" />
+            <button type="submit" class="bg-white text-black font-bold text-xs uppercase tracking-widest px-4 py-3 hover:bg-yellow-500 transition-colors">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-widest text-gray-600">
+        <p>© 2025 SPIC MACAY. All Rights Reserved.</p>
+        <div class="flex gap-8 mt-4 md:mt-0">
+          <a href="#" class="hover:text-white">Privacy Policy</a>
+          <a href="#" class="hover:text-white">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
     window.addEventListener('scroll', () => {
-        const nav = document.getElementById('navbar');
-        if (window.scrollY > 50) {
-            nav.classList.add('nav-scrolled');
-        } else {
-            nav.classList.remove('nav-scrolled');
-        }
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 50) nav.classList.add('nav-scrolled');
+      else nav.classList.remove('nav-scrolled');
     });
 
-    // Raga Clock
-    const prahars = [
-        { name: "Pratah (Morning)", start: 6, end: 9, raga: "Bhairav", mood: "Devotion, Peace", icon: "sunny" },
-        { name: "Late Morning", start: 9, end: 12, raga: "Bhairavi", mood: "Fluidity, Gentle Life", icon: "wb_sunny" },
-        { name: "Madhyanha (Noon)", start: 12, end: 15, raga: "Bhimpalasi", mood: "Passion, Triumph", icon: "light_mode" },
-        { name: "Aparanha (Afternoon)", start: 15, end: 18, raga: "Multani", mood: "Longing, Depth", icon: "wb_twilight" },
-        { name: "Sayankala (Evening)", start: 18, end: 21, raga: "Yaman", mood: "Serenity, Romance", icon: "nights_stay" },
-        { name: "Pradosha (Night)", start: 21, end: 0, raga: "Bageshri", mood: "Mystery, Love", icon: "bedtime" },
-        { name: "Nishitha (Midnight)", start: 0, end: 3, raga: "Malkauns", mood: "Meditation, Cosmos", icon: "bedtime_off" },
-        { name: "Usha (Pre-Dawn)", start: 3, end: 6, raga: "Lalit", mood: "Solemnity, Prayer", icon: "flare" }
+    /* --- RAGA CLOCK CONFIGURATION --- */
+    const CONFIG = {
+      progressMode: "prahar",
+      primarySystem: "hindustani",
+      dailyRotation: true,
+      seasonBias: true,
+      seasons: [
+        { name: "Winter", key: "winter", months: [12, 1, 2] },
+        { name: "Spring", key: "spring", months: [3, 4] },
+        { name: "Summer", key: "summer", months: [5, 6] },
+        { name: "Monsoon", key: "monsoon", months: [7, 8, 9] },
+        { name: "Autumn", key: "autumn", months: [10, 11] }
+      ]
+    };
+
+    const PRAHARS = [
+      {
+        name: "Pratah (Morning)",
+        start: 6, end: 9,
+        mood: "Discipline, Awakening",
+        icon: "sunny",
+        base: {
+          hindustani: ["Bhairav", "Ahir Bhairav", "Nat Bhairav"],
+          carnatic: ["Mayamalavagowla", "Todi", "Bhoopalam"]
+        },
+        seasonal: { spring: { hindustani: ["Hindol"], carnatic: ["Hamsadhwani"] } }
+      },
+      {
+        name: "Late Morning",
+        start: 9, end: 12,
+        mood: "Clarity, Brightness",
+        icon: "wb_sunny",
+        base: {
+          hindustani: ["Brindavani Sarang", "Shuddh Sarang", "Deshkar"],
+          carnatic: ["Arabhi", "Hamsadhwani", "Shankarabharanam"]
+        }
+      },
+      {
+        name: "Madhyanha (Noon)",
+        start: 12, end: 15,
+        mood: "Expansion, Openness",
+        icon: "light_mode",
+        base: {
+          hindustani: ["Bhimpalasi", "Patdeep"],
+          carnatic: ["Madhyamavati", "Suddha Dhanyasi"]
+        },
+        seasonal: { summer: { hindustani: ["Shuddh Sarang"], carnatic: ["Suddha Saveri"] } }
+      },
+      {
+        name: "Aparanha (Afternoon)",
+        start: 15, end: 18,
+        mood: "Longing, Depth",
+        icon: "partly_cloudy_day",
+        base: {
+          hindustani: ["Multani", "Marwa"],
+          carnatic: ["Charukesi", "Vachaspati"]
+        }
+      },
+      {
+        name: "Sayankala (Evening)",
+        start: 18, end: 21,
+        mood: "Serenity, Romance",
+        icon: "nights_stay",
+        base: {
+          hindustani: ["Yaman", "Khamaj"],
+          carnatic: ["Kalyani", "Khamas"]
+        },
+        seasonal: {
+          monsoon: { hindustani: ["Megh", "Miyan ki Malhar", "Gaud Malhar"], carnatic: ["Amritavarshini"] },
+          spring: { hindustani: ["Basant", "Basant Bahar"], carnatic: ["Hamsadhwani"] }
+        }
+      },
+      {
+        name: "Pradosha (Night)",
+        start: 21, end: 0,
+        mood: "Intimacy, Mystery",
+        icon: "bedtime",
+        base: {
+          hindustani: ["Bageshri", "Darbari Kanada", "Kafi"],
+          carnatic: ["Kharaharapriya", "Kambhoji", "Kapi"]
+        },
+        seasonal: {
+          winter: { hindustani: ["Darbari Kanada", "Shree"], carnatic: ["Kambhoji"] },
+          monsoon: { hindustani: ["Miyan ki Malhar"], carnatic: ["Amritavarshini"] }
+        }
+      },
+      {
+        name: "Nishitha (Midnight)",
+        start: 0, end: 3,
+        mood: "Meditation, Cosmos",
+        icon: "dark_mode",
+        base: {
+          hindustani: ["Malkauns", "Chandrakauns"],
+          carnatic: ["Revati", "Shivaranjani"]
+        }
+      },
+      {
+        name: "Usha (Pre-Dawn)",
+        start: 3, end: 6,
+        mood: "Solemnity, Prayer",
+        icon: "flare",
+        base: {
+          hindustani: ["Lalit", "Bhatiyar"],
+          carnatic: ["Bhoopalam", "Bowli"]
+        }
+      }
     ];
 
-    function updateClock() {
-        const now = new Date();
-        const hour = now.getHours();
-        const minute = now.getMinutes();
-        
-        let current = prahars.find(p => {
-            if(p.start < p.end) return hour >= p.start && hour < p.end;
-            return hour >= p.start || hour < p.end;
-        });
-        if(!current && hour < 6) current = (hour < 3) ? prahars[6] : prahars[7];
-
-        document.getElementById('raga-name').textContent = current.raga;
-        document.getElementById('prahar-name').textContent = current.name;
-        document.getElementById('raga-mood').textContent = current.mood;
-        document.getElementById('time-icon').textContent = current.icon;
-        document.getElementById('current-time').textContent = `${hour.toString().padStart(2,'0')}:${minute.toString().padStart(2,'0')}`;
-
-        const totalMinutes = hour * 60 + minute;
-        const percentage = totalMinutes / 1440;
-        const offset = 283 - (283 * percentage);
-        document.getElementById('time-progress').style.strokeDashoffset = offset;
+    function getCurrentSeason() {
+      const m = new Date().getMonth() + 1;
+      return CONFIG.seasons.find(s => s.months.includes(m)) || null;
     }
-    setInterval(updateClock, 1000);
-    updateClock();
 
-    // Fade-up Animations
+    function getCurrentSlot(now = new Date()) {
+      const h = now.getHours();
+      return PRAHARS.find(p =>
+        p.start < p.end ? h >= p.start && h < p.end : h >= p.start || h < p.end
+      ) || PRAHARS[0];
+    }
+
+    function stableIndex(seed, mod) {
+      let hash = 0;
+      for (let i = 0; i < seed.length; i++) hash = (hash * 31 + seed.charCodeAt(i)) >>> 0;
+      return mod ? hash % mod : 0;
+    }
+
+    function getPool(slot, system, season) {
+      if (CONFIG.seasonBias && season && slot.seasonal?.[season.key]?.[system]?.length) {
+        return slot.seasonal[season.key][system];
+      }
+      return slot.base?.[system] || [];
+    }
+
+    function chooseRaga(slot, season) {
+      const result = {};
+      ["hindustani", "carnatic"].forEach(sys => {
+        const pool = getPool(slot, sys, season);
+        if (!pool.length) {
+          result[sys] = { primary: "—", alternates: [] };
+          return;
+        }
+        const key = `${new Date().toDateString()}-${slot.name}-${sys}-${season?.key || ""}`;
+        const idx = CONFIG.dailyRotation ? stableIndex(key, pool.length) : 0;
+        result[sys] = { primary: pool[idx], alternates: pool.filter((_, i) => i !== idx).slice(0, 3) };
+      });
+      return result;
+    }
+
+    function applyAtmosphere(seasonKey) {
+      const bg = document.getElementById("atmosphere-bg");
+      const pill = document.getElementById("season-pill");
+
+      const themes = {
+        winter: { pill: "Winter", bg: "linear-gradient(135deg, rgba(210,225,255,0.55), rgba(253,251,247,0.9))" },
+        spring: { pill: "Spring", bg: "linear-gradient(135deg, rgba(255,230,180,0.45), rgba(253,251,247,0.9))" },
+        summer: { pill: "Summer", bg: "linear-gradient(135deg, rgba(255,214,170,0.45), rgba(253,251,247,0.9))" },
+        monsoon:{ pill: "Monsoon",bg: "linear-gradient(135deg, rgba(190,225,215,0.5), rgba(253,251,247,0.9))" },
+        autumn: { pill: "Autumn", bg: "linear-gradient(135deg, rgba(255,220,160,0.5), rgba(253,251,247,0.9))" }
+      };
+
+      const t = themes[seasonKey] || { pill: "", bg: "linear-gradient(135deg, rgba(253,251,247,1), rgba(253,251,247,1))" };
+
+      if (bg) bg.style.background = t.bg;
+      if (pill) pill.textContent = t.pill;
+    }
+
+    function updateProgress(now, slot) {
+  const circle = document.getElementById("time-progress");
+  const dot = document.getElementById("progress-dot");
+  if (!circle) return;
+
+  const r = 40; // UPDATED RADIUS to match SVG
+  const C = 2 * Math.PI * r; 
+  
+  // 1. Calculate Arc Length
+  let durationHours = slot.end - slot.start;
+  if (durationHours < 0) durationHours += 24; 
+  
+  const arcFraction = durationHours / 24; 
+  const arcLength = C * arcFraction;
+  const gapLength = C - arcLength;
+
+  // 2. Calculate Rotation
+  const startOffsetDeg = (slot.start * 15) - 90;
+
+  circle.style.strokeDasharray = `${arcLength.toFixed(2)} ${gapLength.toFixed(2)}`;
+  circle.style.transform = `rotate(${startOffsetDeg}deg)`;
+
+  // 3. Position the Dot
+  const currentHours = now.getHours() + (now.getMinutes() / 60);
+  const currentDeg = (currentHours * 15) - 90; 
+  const currentRad = currentDeg * (Math.PI / 180);
+
+  if (dot) {
+    const cx = 50 + r * Math.cos(currentRad);
+    const cy = 50 + r * Math.sin(currentRad);
+    dot.setAttribute("cx", cx.toFixed(2));
+    dot.setAttribute("cy", cy.toFixed(2));
+  }
+}
+
+    function set(id, v) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = v;
+    }
+
+    function updateRagaClock() {
+  const now = new Date();
+  const slot = getCurrentSlot(now);
+  const season = getCurrentSeason();
+  const sel = chooseRaga(slot, season);
+
+  // 1. Populate the equal fields
+  set("raga-name", sel.hindustani.primary);
+  set("raga-carnatic", sel.carnatic.primary);
+  
+  // 2. Update common info
+  set("prahar-name", slot.name);
+  set("raga-mood", slot.mood);
+  set("time-icon", slot.icon);
+  set("current-time", `${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`);
+
+  // 3. Update Visuals
+  applyAtmosphere(season ? season.key : "");
+  updateProgress(now, slot);
+}
+
+    updateRagaClock();
+    setInterval(updateRagaClock, 1000);
+
+    /* --- ANIMATIONS & OBSERVERS --- */
     const observerOptions = { threshold: 0.1 };
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
     }, observerOptions);
 
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-    // Counter Animation
     function animateCounter(element, target, duration = 2000) {
-        const start = 0;
-        const increment = target / (duration / 16);
-        let current = start;
-        
-        const timer = setInterval(() => {
-            current += increment;
-            if (current >= target) {
-                element.textContent = formatNumber(target);
-                clearInterval(timer);
-            } else {
-                element.textContent = formatNumber(Math.floor(current));
-            }
-        }, 16);
+      const increment = target / (duration / 16);
+      let current = 0;
+
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          element.textContent = formatNumber(target);
+          clearInterval(timer);
+        } else {
+          element.textContent = formatNumber(Math.floor(current));
+        }
+      }, 16);
     }
 
     function formatNumber(num) {
-        if (num >= 1000000) {
-            return (num / 1000000).toFixed(1) + 'M';
-        } else if (num >= 1000) {
-            return (num / 1000).toFixed(0) + 'K';
-        }
-        return num.toString();
+      if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+      if (num >= 1000) return (num / 1000).toFixed(0) + 'K';
+      return num.toString();
     }
 
     const counterObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const target = parseInt(entry.target.dataset.target);
-                animateCounter(entry.target, target);
-                counterObserver.unobserve(entry.target);
-            }
-        });
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const target = parseInt(entry.target.dataset.target);
+          animateCounter(entry.target, target);
+          counterObserver.unobserve(entry.target);
+        }
+      });
     }, { threshold: 0.5 });
 
     document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
 
-    // Enhanced Tanpura Drone
+    /* --- AUDIO / TANPURA --- */
     let synth, lfo, isPlaying = false;
-    
+
     async function toggleDrone() {
-        const btnText = document.getElementById('play-text-hero');
-        const vis = document.getElementById('visualizer-hero');
-        
-        if (!isPlaying) {
-            await Tone.start();
-            if(!synth) {
-                synth = new Tone.PolySynth(Tone.FMSynth, {
-                    harmonicity: 1.5,
-                    modulationIndex: 12,
-                    oscillator: { type: "sine" },
-                    envelope: { attack: 4, decay: 2, sustain: 0.8, release: 4 },
-                    modulation: { type: "triangle" },
-                    modulationEnvelope: { attack: 2, decay: 1, sustain: 0.5, release: 2 }
-                }).toDestination();
-                
-                synth.volume.value = -18;
-                
-                lfo = new Tone.LFO(1.5, -10, 10).start();
-                lfo.connect(synth.volume);
-            }
-            
-            synth.triggerAttack(["C2", "C3", "G3", "C4"]);
-            btnText.textContent = "Stop";
-            vis.style.opacity = "1";
-            isPlaying = true;
-        } else {
-            synth.releaseAll();
-            btnText.textContent = "Play Tanpura";
-            vis.style.opacity = "0.5";
-            isPlaying = false;
+      const btnText = document.getElementById('play-text-hero');
+      const vis = document.getElementById('visualizer-hero');
+
+      if (!isPlaying) {
+        await Tone.start();
+        if (!synth) {
+          synth = new Tone.PolySynth(Tone.FMSynth, {
+            harmonicity: 1.5,
+            modulationIndex: 12,
+            oscillator: { type: "sine" },
+            envelope: { attack: 4, decay: 2, sustain: 0.8, release: 4 },
+            modulation: { type: "triangle" },
+            modulationEnvelope: { attack: 2, decay: 1, sustain: 0.5, release: 2 }
+          }).toDestination();
+
+          synth.volume.value = -18;
+          lfo = new Tone.LFO(1.5, -10, 10).start();
+          lfo.connect(synth.volume);
         }
+
+        synth.triggerAttack(["C2", "C3", "G3", "C4"]);
+        btnText.textContent = "Stop";
+        vis.style.opacity = "1";
+        isPlaying = true;
+      } else {
+        synth.releaseAll();
+        btnText.textContent = "Play Tanpura";
+        vis.style.opacity = "0.5";
+        isPlaying = false;
+      }
     }
 
-    // Mobile Menu
-    function toggleMenu() {
-        const menu = document.getElementById('mobile-menu');
-        const btn = document.getElementById('mobile-menu-btn');
-        const isOpen = !menu.classList.contains('translate-x-full');
-        
-        menu.classList.toggle('translate-x-full');
-        btn.setAttribute('aria-expanded', !isOpen);
-        btn.querySelector('span').textContent = isOpen ? 'menu' : 'close';
-        
-        if (!isOpen) {
-            menu.querySelector('a').focus();
-        }
-    }
-    
-    document.getElementById('mobile-menu-btn').onclick = toggleMenu;
-    
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            const menu = document.getElementById('mobile-menu');
-            if (!menu.classList.contains('translate-x-full')) {
-                toggleMenu();
+    /* --- MAPS AND EVENTS --- */
+    (() => {
+      const DEBUG = true;
+
+      function dbg(msg) {
+        if (!DEBUG) return;
+        console.log("Debug: " + msg);
+      }
+
+      function ensureEvents() {
+        if (Array.isArray(window.events) && window.events.length) return;
+        window.events = [
+          { id: 1, title: "Sitar Recital", artist: "Pt. Budhaditya Mukherjee", city: "New Delhi", venue: "IIT Delhi", date: "Oct 15", time: "6:00 PM", lat: 28.5450, lng: 77.1926 },
+          { id: 2, title: "Odissi Dance", artist: "Vidushi Madhavi Mudgal", city: "Mumbai", venue: "NCPA", date: "Oct 18", time: "7:00 PM", lat: 18.9260, lng: 72.8210 },
+          { id: 3, title: "Carnatic Vocal", artist: "T.M. Krishna", city: "Chennai", venue: "Kalakshetra", date: "Oct 20", time: "5:30 PM", lat: 12.9830, lng: 80.2594 },
+          { id: 4, title: "Heritage Walk", artist: "Guided Tour", city: "Varanasi", venue: "Assi Ghat", date: "Oct 22", time: "6:00 AM", lat: 25.2958, lng: 83.0062 },
+          { id: 5, title: "Dhrupad", artist: "Gundecha Brothers", city: "Bhopal", venue: "Bharat Bhavan", date: "Oct 25", time: "6:00 PM", lat: 23.2427, lng: 77.3940 }
+        ];
+      }
+
+      function renderEventList() {
+        const listEl = document.getElementById("event-list");
+        if (!listEl) return;
+        listEl.innerHTML = "";
+
+        (window.events || []).forEach((evt) => {
+          const item = document.createElement("div");
+          item.className = "p-6 border-b border-gray-100 cursor-pointer hover:bg-yellow-50 transition-colors group";
+          item.innerHTML = `
+            <div class="flex justify-between items-start mb-2">
+              <span class="text-[0.6rem] font-bold uppercase tracking-widest text-red-800">${evt.city}</span>
+              <span class="text-xs font-serif italic text-gray-500">${evt.date}</span>
+            </div>
+            <h3 class="text-lg serif text-gray-900 group-hover:text-red-800 transition-colors">${evt.title}</h3>
+            <p class="text-xs font-light text-gray-600 mt-1">${evt.artist}</p>
+            <p class="text-[0.6rem] font-bold uppercase tracking-wider text-gray-400 mt-2">${evt.venue}</p>
+          `;
+          item.onclick = () => {
+            if (window.__map && window.__markers?.[evt.id] && window.__info) {
+              window.__map.panTo({ lat: evt.lat, lng: evt.lng });
+              window.__map.setZoom(12);
+              window.__info.setContent(`
+                <div style="padding:10px; max-width:220px;">
+                  <strong style="font-family:'Playfair Display',serif; font-size:16px; display:block; margin-bottom:4px;">${evt.title}</strong>
+                  <span style="font-family:'Manrope',sans-serif; font-size:12px; color:#555;">${evt.artist}</span>
+                  <div style="margin-top:8px; padding-top:8px; border-top:1px solid #eee;">
+                    <span style="font-size:10px; color:#999; text-transform:uppercase; letter-spacing:1px;">${evt.venue}</span>
+                  </div>
+                </div>
+              `);
+              window.__info.open(window.__map, window.__markers[evt.id]);
             }
+          };
+          listEl.appendChild(item);
+        });
+      }
+
+      async function initMapSafe() {
+        const mapEl = document.getElementById("map");
+        if (!mapEl) return dbg("map div not found");
+
+        if (!window.google?.maps?.importLibrary) {
+          return dbg("google maps not available");
         }
-    });
 
-    // Google Maps & Events
-    const events = [
-        { id: 1, title: "Sitar Recital", artist: "Pt. Budhaditya Mukherjee", city: "New Delhi", venue: "IIT Delhi", date: "Oct 15", time: "6:00 PM", lat: 28.5450, lng: 77.1926 },
-        { id: 2, title: "Odissi Dance", artist: "Vidushi Madhavi Mudgal", city: "Mumbai", venue: "NCPA", date: "Oct 18", time: "7:00 PM", lat: 18.9260, lng: 72.8210 },
-        { id: 3, title: "Carnatic Vocal", artist: "T.M. Krishna", city: "Chennai", venue: "Kalakshetra", date: "Oct 20", time: "5:30 PM", lat: 12.9830, lng: 80.2594 },
-        { id: 4, title: "Heritage Walk", artist: "Guided Tour", city: "Varanasi", venue: "Assi Ghat", date: "Oct 22", time: "6:00 AM", lat: 25.2958, lng: 83.0062 },
-        { id: 5, title: "Dhrupad", artist: "Gundecha Brothers", city: "Bhopal", venue: "Bharat Bhavan", date: "Oct 25", time: "6:00 PM", lat: 23.2427, lng: 77.3940 }
-    ];
+        try {
+          const { Map, InfoWindow } = await google.maps.importLibrary("maps");
+          const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary("marker");
 
-    async function initMap() {
-        const { Map, InfoWindow } = await google.maps.importLibrary("maps");
-        const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary("marker");
-
-        const map = new Map(document.getElementById("map"), {
+          const map = new Map(mapEl, {
             center: { lat: 21.7679, lng: 78.8718 },
             zoom: 4,
-            mapId: "SPIC_MACAY_ELEGANT_FINAL",
+            mapId: "SPIC_MACAY_ELEGANT_FINAL", 
             disableDefaultUI: true,
             gestureHandling: "cooperative",
-            styles: [{ "stylers": [{ "saturation": -100 }, { "gamma": 0.8 }] }] 
-        });
+          });
 
-        const infoWindow = new InfoWindow();
-        const listEl = document.getElementById('event-list');
+          window.__map = map;
+          window.__info = new InfoWindow();
+          window.__markers = {};
 
-        events.forEach(evt => {
-            const item = document.createElement('div');
-            item.className = "p-6 border-b border-gray-100 cursor-pointer hover:bg-yellow-50 transition-colors group";
-            item.innerHTML = `
-                <div class="flex justify-between items-start mb-2">
-                    <span class="text-[0.6rem] font-bold uppercase tracking-widest text-red-800">${evt.city}</span>
-                    <span class="text-xs font-serif italic text-gray-500">${evt.date}</span>
-                </div>
-                <h3 class="text-lg serif text-gray-900 group-hover:text-red-800 transition-colors">${evt.title}</h3>
-                <p class="text-xs font-light text-gray-600 mt-1">${evt.artist}</p>
-                <p class="text-[0.6rem] font-bold uppercase tracking-wider text-gray-400 mt-2">${evt.venue}</p>
-            `;
-            item.onclick = () => {
-                map.panTo({ lat: evt.lat, lng: evt.lng });
-                map.setZoom(12);
-                showInfo(evt);
-            };
-            listEl.appendChild(item);
-
+          (window.events || []).forEach((evt) => {
             const pin = new PinElement({
-                background: "#B91C1C",
-                borderColor: "#ffffff",
-                glyphColor: "#ffffff",
-                scale: 0.9
+              background: "#B91C1C",
+              borderColor: "#ffffff",
+              glyphColor: "#ffffff",
+              scale: 0.9
             });
 
             const marker = new AdvancedMarkerElement({
-                map,
-                position: { lat: evt.lat, lng: evt.lng },
-                content: pin.element,
-                title: evt.title
+              map,
+              position: { lat: evt.lat, lng: evt.lng },
+              content: pin.element,
+              title: evt.title
             });
+
+            window.__markers[evt.id] = marker;
 
             marker.addListener("click", () => {
-                showInfo(evt);
-                map.panTo(marker.position);
-                map.setZoom(12);
+              map.panTo(marker.position);
+              map.setZoom(12);
             });
+          });
 
-            function showInfo(data) {
-                const content = `
-                    <div style="padding:10px; max-width:200px;">
-                        <strong style="font-family:'Playfair Display',serif; font-size:16px; display:block; margin-bottom:4px;">${data.title}</strong>
-                        <span style="font-family:'Manrope',sans-serif; font-size:12px; color:#555;">${data.artist}</span>
-                        <div style="margin-top:8px; padding-top:8px; border-top:1px solid #eee;">
-                            <span style="font-size:10px; color:#999; text-transform:uppercase; letter-spacing:1px;">${data.venue}</span>
-                        </div>
-                    </div>
-                `;
-                infoWindow.setContent(content);
-                infoWindow.open(map, marker);
-            }
-        });
-    }
-    initMap();
-</script>
+        } catch (e) {
+          dbg("map init failed: " + e);
+        }
+      }
+
+      function boot() {
+        try {
+          ensureEvents();
+          renderEventList();
+          initMapSafe();
+        } catch (e) {
+          console.error("Script Error:", e);
+        }
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", boot);
+      } else {
+        boot();
+      }
+    })();
+  </script>
 </body>
 </html>
